@@ -33,7 +33,7 @@ mp.gui.chat.visible(visible);
 /*
 * msg: string
 * scope: string (message's scope (Author [scope] msg))
-* author: string (Default: [SERVER])
+* author: string
 * authorColor: int hudColorID (https://wiki.rage.mp/index.php?title=Fonts_and_Colors) (Default: white)
 */
 mp.gui.chat.sendMessage(msg, scope, author, authorColor);
@@ -74,7 +74,7 @@ mp.players.announce(msg, scope, author, authorColor);
 * dimension: int
 * msg: string
 * scope: string (message's scope (Author [scope] msg))
-* author: string (Default: [SERVER])
+* author: string
 * authorColor: int hudColorID (https://wiki.rage.mp/index.php?title=Fonts_and_Colors) (Default: white)
 */
 
@@ -86,7 +86,7 @@ mp.players.announceInDimension(dimension, msg, scope, author, authorColor);
 * range: int
 * msg: string
 * scope: string (message's scope (Author [scope] msg))
-* author: string (Default: [SERVER])
+* author: string
 * authorColor: int hudColorID (https://wiki.rage.mp/index.php?title=Fonts_and_Colors) (Default: white)
 */
 mp.players.announceInRange(position, range, msg, scope, author, authorColor);
@@ -112,7 +112,7 @@ mp.events.removeChatCommand(name);
 * Sends message to all players in server
 * msg: string
 * scope: string (message's scope (Author [scope] msg))
-* author: string (Default: [SERVER])
+* author: string
 * authorColor: int hudColorID (https://wiki.rage.mp/index.php?title=Fonts_and_Colors) (Default: white)
 */
 
