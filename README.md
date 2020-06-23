@@ -17,11 +17,11 @@ chat scaleform functionality for RAGE:MP
 
 # Language mapping
 
-Special thanks to [chrysls](https://github.com/chrysls) for his awesome contribution in creating Multi-language support. Although it's currently limited into '''English''' + secondary language, but we're aiming for more than two languages support in the future. Currently the first supported language is '''Russian''' which is provided in `client_packages/chat/mapping/ru.js`. Feel free expand our language database by your awesome contribution.
+Special thanks to [chrysls](https://github.com/chrysls) for his awesome contribution in creating Multi-language support. Although it's currently limited into **English + secondary language**, but we're aiming for more than two languages support in the future. Currently the first supported language is **Russian** which is provided in `client_packages/chat/mapping/ru.js`. Feel free expand our language database by your awesome contribution.
 
 ## How to contribute to language mapping
 
-If you're a developer and want to expand our language mapping. Create an '''javascript''' file in `client_packages/chat/mapping/` and copy the form from `_base.js` and replace each key with its own unicode decimal. For more information about the keys, please check [virtual key codes](https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes).
+If you're a developer and want to expand our language mapping. Create an **javascript** file in `client_packages/chat/mapping/` and copy the form from `_base.js` and replace each key with its own unicode decimal. For more information about the keys, please check [virtual key codes](https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes).
 To produce the unicode decimal for each key, you're required to run this small code provided by [chrysls](https://github.com/chrysls) to log each letter key in upper/lower case.
 
 ```js
