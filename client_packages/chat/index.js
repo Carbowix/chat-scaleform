@@ -1,11 +1,10 @@
 require('./chat/commands')
 const scaleform = require('./chat/Scaleform');
 const chat = new scaleform('multiplayer_chat');
-
-// mapping for extra language.
-// I don't think anybody is going to use more than two languages.. [english+native]
-const MAPPING = require('./chat/mapping/ru.js');
+// Chat mapping support only one extra language for now.
 //const MAPPING = null; - disable mapping if not required
+const MAPPING = require('./chat/mapping/ru.js');
+
 
 const specialChars = {
     0x30: ")",
@@ -176,7 +175,7 @@ setInterval(_ => { // Checking backspace
     if (mp.keys.isDown(8) && mp.gui.chat.enabled) deleteText();
     if (mp.keys.isDown(33) && mp.gui.chat.enabled) scroll('up') // Page up
     if (mp.keys.isDown(34) && mp.gui.chat.enabled) scroll('down'); // Page down
-    if (mp.keys.isDown(16) && mp.keys.isDown(18)) { // alt + shift
+    if (mp.keys.isDown(16) && mp.keys.isDown(18)) { // alt + shift (Changes the chat's language typing)
         langChanged = !langChanged;
         canChangeLang = false;
     } else {
@@ -206,7 +205,7 @@ mp.events.add({
             triggerHideTimeout();
         }
     },
-    'keydown': (i) => { // Credits to stuyk/Gorge
+    'keydown': (i) => {
         if (mp.gui.chat.enabled) {
             if (MAPPING && langChanged) {
 
@@ -247,63 +246,3 @@ mp.events.add({
         chat.callFunction('RESET');
     }
 });
-
-/*
-mp.game.streaming.requestIpl("xs_arena_interior_mod");
-mp.game.streaming.requestIpl("xs_arena_interior_mod_2");
-mp.game.streaming.requestIpl("xs_arena_interior_vip");
-
-const localPlayer = mp.players.local;
-const interiorID = mp.game.interior.getInteriorAtCoords(205.000, 5180.000, -90.000);
-const interiorID2 = mp.game.interior.getInteriorAtCoords(170.000, 5190.000, 10.000);
-// new mp.Vector3(205.000 5180.000 -91.000);
-const interiorProps2 = [
-    "Set_Int_MOD2_B1",
-    "Set_Int_MOD2_B_TINT",
-    "Set_Mod2_Style_02"
-];
-
-const interiorProps = [
-    "Set_Int_MOD_SHELL_DEF",
-    "Set_Mod1_Style_02",
-    "Set_Int_MOD_BOOTH_BEN",
-    "SET_OFFICE_HITECH",
-    "set_arena_peds",
-    "SET_XMAS_DECORATIONS",
-    "Set_Int_MOD_TROPHY_CAREER",
-    "Set_Int_MOD_TROPHY_SCORE",
-    "Set_Int_MOD_TROPHY_WAGEWORKER",
-    "Set_Int_MOD_TROPHY_TIME_SERVED",
-    "Set_Int_MOD_TROPHY_GOT_ONE",
-    "Set_Int_MOD_TROPHY_OUTTA_HERE",
-    "Set_Int_MOD_TROPHY_SHUNT",
-    "Set_Int_MOD_TROPHY_BOBBY",
-    "Set_Int_MOD_TROPHY_KILLED",
-    "Set_Int_MOD_TROPHY_CROWD",
-    "Set_Int_MOD_TROPHY_DUCK",
-    "Set_Int_MOD_TROPHY_BANDITO",
-    "Set_Int_MOD_TROPHY_SPINNER",
-    "Set_Int_MOD_TROPHY_LENS",
-    "Set_Int_MOD_TROPHY_WAR",
-    "Set_Int_MOD_TROPHY_UNSTOPPABLE",
-    "Set_Int_MOD_TROPHY_CONTACT",
-    "Set_Int_MOD_TROPHY_TOWER",
-    "Set_Int_MOD_TROPHY_STEP",
-    "Set_Int_MOD_TROPHY_PEGASUS",
-    "SET_BANDITO_RC",
-    "SET_OFFICE_TRINKET_03",
-];
-
-    interiorProps2.forEach(prop => {
-        mp.game.interior.enableInteriorProp(interiorID2, prop);
-        mp.game.interior.refreshInterior(interiorID2);
-    });
-
-setTimeout(_ => {
-        interiorProps.forEach(prop => {
-            mp.game.interior.enableInteriorProp(interiorID, prop);
-            mp.game.interior.refreshInterior(interiorID);
-        });
-        localPlayer.setCoordsNoOffset(205.000, 5180.000, -90.000, false, false, false);
-}, 5000);
-*/

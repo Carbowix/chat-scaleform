@@ -6,13 +6,29 @@ chat scaleform functionality for RAGE:MP
 - **T** (GLOBAL chat)
 - **Y** (TEAM chat)
 - **U** (LOCAL chat)
+- **alt + shift** (Changes to the secondary language if supported)
 - **PAGE_UP** (Scroll history up) works only when input is opened
 - **PAGE_DOWN** (Scroll history down)  works only when input is opened
 
 ## Known Issues
 
 - Message colors for player's message isn't supported due to scaleform.
-- Other languages than ENGLISH isn't supported (Might be supported in future)
+- Chat supports only one extra language and needs to be mapped before being used.
+
+# Language mapping
+
+Special thanks to [chrysls](https://github.com/chrysls) for his awesome contribution in creating Multi-language support. Although it's currently limited into '''English''' + secondary language, but we're aiming for more than two languages support in the future. Currently the first supported language is '''Russian''' which is provided in `client_packages/chat/mapping/ru.js`. Feel free expand our language database by your awesome contribution.
+
+## How to contribute to language mapping
+
+If you're a developer and want to expand our language mapping. Create an '''javascript''' file in `client_packages/chat/mapping/` and copy the form from `_base.js` and replace each key with its own unicode decimal. For more information about the keys, please check [virtual key codes](https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes).
+To produce the unicode decimal for each key, you're required to run this small code provided by [chrysls](https://github.com/chrysls) to log each letter key in upper/lower case.
+
+```js
+document.body.addEventListener('keyup', function(e){
+  console.log('' + e.code.charCodeAt(e.code.length - 1) + ': ' + e.key.charCodeAt(0));
+});
+```
 
 # API
 
